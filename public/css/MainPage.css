@@ -1,0 +1,155 @@
+/*All Functions*/
+
+a.logo:link {
+  color: black;
+  text-decoration: inherit;
+}
+.img-fluid.logo {
+  width: 7%;
+}
+
+.container-fluid.header {
+  font-size: 3.5vw;
+  color: black;
+  background-color: teal;
+  padding: 1%;
+  text-align: center;
+  border: blue;
+  border-style: solid;
+}
+
+.bi-list::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f0c9";
+  font-weight: 900;
+}
+
+.navbar-expand-sm {
+  background-color: white;
+}
+
+.nav-link {
+  color: black;
+  text-indent: 30%;
+}
+
+.fas {
+  font-size: 125%;
+  color: white;
+  display: inline;
+  margin-right: 10px;
+}
+
+.img-move-around {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+.floating-img {
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+}
+
+/*Main*/
+.container-fluid.carousel {
+  width: 50%;
+}
+.mx-auto.float-left.picture {
+  height: 50%;
+  width: 100%;
+}
+
+/*Locations*/
+.caption {
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: black;
+  text-align: center;
+}
+
+/*Contacts*/
+
+/*Login*/
+
+/*Register*/
+.contact .php-email-form input {
+  font-size: 1rem;
+}
+.form-text.text-muted {
+  display: none;
+}
+input:required {
+  border: red solid 2px;
+}
+input:invalid {
+  border: red solid 2px;
+}
+input:valid {
+  border: green solid 2px;
+}
+
+select:required {
+  border: red solid 2px;
+}
+select:invalid {
+  border: red solid 2px;
+}
+select:valid {
+  border: green solid 2px;
+}
+
+fieldset {
+  background-color: silver;
+  text-align: left;
+  margin: 3%;
+}
+.contact .php-email-form button {
+  background: #67b0d1;
+  border: 0;
+  padding: 10px 24px;
+  color: #fff;
+  transition: 0.4s;
+}
+
+.contact .php-email-form button:hover {
+  background: #8ec4dd;
+}
+
+.no-shadow {
+  box-shadow: none !important;
+}
+
+.col-centered {
+  text-align: center;
+}
+.left-align {
+  text-align: left;
+}
+
+.register {
+  box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
+  background: #fff;
+}
+
+.form-register {
+  box-shadow: none !important;
+}
+.select-border {
+  border-radius: 0;
+  padding: 10px 15px;
+}
+
+.form-control {
+  border-radius: 8px !important;
+}
+.form-control.select {
+  width: 35% !important;
+}
+
+.package-cols {
+  box-shadow: 0 0 30px rgb(214 215 216 / 60%);
+  padding: 30px;
+  background: #fff;
+}

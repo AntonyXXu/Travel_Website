@@ -1,0 +1,89 @@
+extends layout 
+block vars 
+    -var contactPageActive= "active"
+block title   
+  title TravelExperts Contacts
+
+block content 
+  // ======= Team Section =======
+  main#main
+  section#team.team
+    .container
+      .section-title(data-aos='fade-in' data-aos-delay='100')
+        h2 Our Team
+        p
+          | Meet our outstanding team! They have travelled all over the world
+          | and have planned out hundreds of trips for our clients.
+          // This section capture information from database for populating info about Team Management .
+      .row
+        each contact in contacts
+          if contact.area == 'Management'
+            .col-lg-4.col-md-6
+                .member(data-aos='fade-up')
+                    .pic
+                        img.img-fluid(src=`/media/Team/${contact.picName}.jpg` alt='')
+                    .member-info
+                        h4 #{contact.name}
+                            p #{contact.title}
+                            p #{contact.phone}
+                            p #{contact.location}
+                            a(href =`mailto:${contact.emailAddress}`) #{contact.emailAddress}   
+  // End Team Section
+  // ======= Contact Section =======
+  section#contact.contact.section-bg
+    .container(data-aos='fade-up')
+      .section-title
+        h2 Contact
+        p
+          | Send us an email, call us, or come visit us (after covid) if you
+          | have any questions!
+      .row
+        .col-lg-4.col-md-6
+          .info-box.mb-4
+            i.bx.bx-envelope
+            h3 Email Us
+            a(href='mailto:webmaster@example.com') webmaster@example.com
+        .col-lg-4.col-md-6
+          .info-box.mb-4
+            i.bx.bx-phone-call
+            h3 Call Us
+            p +1 123 456 7890
+        .col-lg-4.col-md-6
+          .info-box.mb-4
+            i.bx.bxs-plane-alt
+            h3 Frequent Travel Rewards info
+            p +1 123 456 0987 
+             // This section capture information from database for populatng office location info and sales agents  
+      .row  
+        each pffice in pffices
+          .col-lg-4
+            .info-box.mb-4
+              i.bx.bx-map
+              h3 #{pffice.location}
+              p #{pffice.name}
+              p #{pffice.phone}
+              p #{pffice.address}
+              a(href =`mailto:${pffice.email}`) #{pffice.email}
+          .col-lg-4
+            iframe.mb-4.mb-lg-0(src=`https://www.google.com/${pffice.map}`
+            frameborder='0' style='border: 0; width: 100%; height: 90%'
+            allowfullscreen='') 
+          .col-lg-4 
+            .info-box.mb-4
+              table.table.table-borderless(style="font-size:14px")
+                thead
+                  tr
+                    th(scope='col') Agent
+                    th(scope='col') Phone 
+                    th(scope='col') Email
+                each contact in contacts     
+                  if contact.location == pffice.location && contact.area == 'Sales'           
+                    tbody
+                      tr
+                      td #{contact.name}
+                      td #{contact.phone}
+                      td 
+                        a(href =`mailto:${contact.emailAddress}`) #{contact.emailAddress}         
+  // End Contact Section     
+
+

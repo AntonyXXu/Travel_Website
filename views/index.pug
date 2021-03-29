@@ -1,0 +1,16 @@
+extends layout 
+block vars 
+    -var mainPageActive= "active"
+block title   
+  title TravelExperts Home
+block content
+
+  main#main
+    // ======= Main Section =======
+    section#hero
+      .hero-container(data-aos='fade-up')
+        h1 Welcome to Travel Experts
+        h2 We are team of talented tourism advisors who plan trips all over the world
+        a.btn-get-started.scrollto(href='/packages')
+          i.fa.fa-angle-double-right
+    // End Hero

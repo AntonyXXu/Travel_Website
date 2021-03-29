@@ -1,0 +1,22 @@
+extends layout
+block vars 
+    -var locationPageActive= "active"
+block title   
+  title TravelExperts Contacts
+block content
+  main#main
+  section#services.services
+    .container
+      .section-title
+        h2 Purchase Complete
+      .row                   
+        .col.col-centered
+          a(href="/packages")
+            .icon-box(data-aos='fade-up')
+              .icon
+                  i.fas.fa-atlas
+              h4.title.center-container-text
+                a(href="/packages") View more packages
+
+
+  

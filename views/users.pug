@@ -1,0 +1,64 @@
+extends layout 
+block vars 
+block title   
+  title TravelExperts User
+
+block content 
+  // ======= Team Section =======
+  main#main
+    section#services.services
+      .container
+        .section-title
+          h2
+            thankTitle= `Thanks for coming to TravelExperts`     
+          p
+            thankMessage #{thankMessageText}
+          p 
+            if currentUser
+              p 
+              | Hello #{currentUser.username}, Thanks for logging in. Please take a look at our outstanding travel packages. 
+              | They are all competitive in price, and provide outstanding agents who will plan out your next vacation. See below for your past trips.
+            else 
+              usermsg Hello! Feel free to log in to view our packages
+        
+        if currentUser
+          .row
+            if currentUser.admin
+              .col.col-centered
+                a(href="/packages/create")
+                  .icon-box(data-aos='fade-up')
+                    .icon
+                      i.far.fa-plus-square
+                    h4.title
+                      a(href="/packages/create") Create a new package
+                    p.description Create a new package (Agent)
+            .col.col-centered
+              a(href="/packages")
+                .icon-box(data-aos='fade-up' data-aos-delay='100')
+                
+                  .icon
+                    i.fas.fa-atlas
+                  h4.title
+                    a(href="/packages") View our packages
+                  p.description View our fine vacation packages
+            .col.col-centered
+              a(href="/log-out")
+                .icon-box(data-aos='fade-up' data-aos-delay='200')
+                  .icon
+                    i.fas.fa-sign-out-alt
+                  h4.title
+                    a(href="/log-out") Log out
+                  p.description Log out of the account
+          <br>
+          .row
+            .col.col-centered
+              .icon-box(data-aos='fade-up' data-aos-delay='200')
+                h4.title List of past package purchases
+                each pkg in allPackages 
+                  h6.left-align= `Past Trip at ${pkg.detailedLocation}`
+                  p.left-align= `Package ID = ${pkg.packageID}. Total Cost was $${pkg.totalCost}. Contact your agent for details`
+                  
+
+                
+
+    

@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/47ab107e-5d0f-4921-9624-3d00be851cc2/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/AntonyNetTest",
+    "appService.deploySubpath": "."
+}

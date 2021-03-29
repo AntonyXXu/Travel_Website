@@ -1,0 +1,110 @@
+extends layout
+block vars 
+    -var locationPageActive= "active"
+block title   
+  title TravelExperts Locations
+block content
+  main#main
+      // portfolio
+  section#Locations.portfolio
+    .container
+      .section-title(data-aos='fade-in' data-aos-delay='100')
+        h2 Locations
+        p
+          | Take a peek at the locations we offer support for! We help you find affordable yet cozy hotels, create outstanding
+          | travel itineraries, and most importantly fit in must-visit restaurants for foodies.
+      .row(data-aos='fade-in')
+        .col-lg-12.d-flex.justify-content-center
+          ul#portfolio-flters
+            li.filter-active(data-filter='*') All
+            li(data-filter='.filter-america') Americas
+            li(data-filter='.filter-europe') Europe
+            li(data-filter='.filter-asia') Asia
+
+      .row.portfolio-container(data-aos='fade-up')
+        each location in locations 
+            .col-lg-4.col-md-6.portfolio-item(class=`filter-${location.bodyClass}`)
+                a(href=`/packages/${location.locationName}` title=`More Details on ${location.locationName}`)  
+                    .portfolio-wrap
+                        img.img-fluid(src=`/media/MainPage/${location.picName}.jpg` alt=`${location.locationName}`)
+                        .portfolio-lightbox
+                          .caption= `${location.locationName}`      
+      
+      
+    //-
+      .row.portfolio-container(data-aos='fade-up')
+        .col-lg-4.col-md-6.portfolio-item.filter-america
+          a(href='Packages' title='More Details')  
+            .portfolio-wrap
+              img.img-fluid(src='media/MainPage/CentralPark_USA.jpg' alt='CentralPark_USA.jpg')
+              .portfolio-links
+                .portfolio-links
+                  .portfolio-lightbox
+                    .caption Central Park, USA
+
+        .col-lg-4.col-md-6.portfolio-item.filter-europe
+          a(href='Packages' title='More Details')  
+            .portfolio-wrap
+              img.img-fluid(src='media/MainPage/Louvre_France.jpg' alt='Louvre, France')
+              .portfolio-links
+                .portfolio-lightbox
+                  .caption Louvre, France
+
+        .col-lg-4.col-md-6.portfolio-item.filter-america
+          a(href='Packages' title='More Details')  
+            .portfolio-wrap
+              img.img-fluid(src='media/MainPage/MoraineLake_Canada.jpg' alt='Moraine Lake, Canada')
+              .portfolio-links
+                .portfolio-lightbox
+                  .caption Moraine Lake, Canada
+
+        .col-lg-4.col-md-6.portfolio-item.filter-asia
+          a(href='Packages' title='More Details')  
+            .portfolio-wrap
+              img.img-fluid(src='media/MainPage/TajMahal_India.jpg' alt='Taj Mahal, India')
+              .portfolio-links
+                .portfolio-lightbox
+                  .caption Taj Mahal, India
+
+        .col-lg-4.col-md-6.portfolio-item.filter-europe
+          a(href='Packages' title='More Details')  
+            .portfolio-wrap
+              img.img-fluid(src='media/MainPage/Colosseum_Greece.jpg' alt='Colosseum, Greece')
+              .portfolio-links
+                .portfolio-lightbox
+                  .caption Colosseum, Greece
+
+        .col-lg-4.col-md-6.portfolio-item.filter-america
+          a(href='Packages' title='More Details')  
+            .portfolio-wrap
+              img.img-fluid(src='media/MainPage/MachuPicchu_Peru.jpg' alt='Machu Picchu, Peru')
+              .portfolio-links
+                .portfolio-lightbox
+                  .caption Machu Picchu, Peru
+
+        .col-lg-4.col-md-6.portfolio-item.filter-asia
+          a(href='Packages' title='More Details')  
+            .portfolio-wrap
+              img.img-fluid(src='media/MainPage/ZhangJiaJie_China.jpg' alt='ZhangJiaJie, China')
+              .portfolio-links
+                .portfolio-lightbox
+                  .caption ZhangJiaJie, China
+          
+        .col-lg-4.col-md-6.portfolio-item.filter-asia
+          a(href='Packages' title='More Details')  
+            .portfolio-wrap
+              img.img-fluid(src='media/MainPage/Hakone_Japan.jpg' alt='Hakone, Japan')
+              .portfolio-links
+                .portfolio-lightbox
+                  .caption Hakone, Japan
+
+        .col-lg-4.col-md-6.portfolio-item.filter-europe
+          a(href='Packages' title='More Details')  
+            .portfolio-wrap
+              img.img-fluid(src='media/MainPage/GrandCanal_Italy.jpg' alt='GrandCanal, Italy')
+              .portfolio-links
+                .portfolio-lightbox
+                  .caption Grand Canal, Italy
+      // End Portfolio Section
+    
+      

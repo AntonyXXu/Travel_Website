@@ -1,0 +1,45 @@
+extends layout
+block vars 
+    -var locationPageActive= "active"
+block title   
+  title TravelExperts Packages
+block content
+ main#main
+  section#contact.contact.section-bg
+    .container(data-aos='fade-up')
+      .section-title
+        h2 #{pkgLocationName}  
+      if packages.length == 0
+        h4 Sorry, we have no packages at this location. Please take a look at the packages menu
+      each pkg in packages  
+        .row        
+          .col-lg-6.package-cols.no-shadow
+            .pic            
+              img.img.figure-img.img-fluid.rounded-fluid(src=`/media/MainPage/${pkg.picName}.jpg` alt=`${pkg.detailedLocation}`)
+          .col.col-centered.package-cols 
+            h2 
+              packageTitle= `${pkg.detailedLocation}, ${pkg.locationName}`
+              <br>
+              <br>
+            p.left-align= `${pkg.description}`
+            p.left-align= `Base Price per person: $${pkg.basePrice} CAD`
+            p.left-align= `Service Fee: $${pkg.agentCommission} CAD`
+            if pkg.startDate <= new Date()
+              p(style='color:red;').left-align= `Start Date: ${String(pkg.startDate).slice(3, 15)}`
+            else
+              p.left-align= `Start Date: ${String(pkg.startDate).slice(3, 15)}`
+            p.left-align= `End Date: ${String(pkg.endDate).slice(3, 15)}`
+            if !currentUser
+              form(method='GET' action='/account' target='')
+                button.btn.btn-primary= `Log in or register to purchase`
+            else
+              form(method='POST' action=`/packages/purchase/` target='')
+                input(type='hidden' name='pkgID' value=`${pkg._id}`)
+                input(type='hidden' name='detailedLocation' value=`${pkg.detailedLocation}`)
+                input(type='hidden' name='pkgBasePrice' value=`${pkg.basePrice}`)
+                input(type='hidden' name='pkgAgentPrice' value=`${pkg.agentCommission}`)
+                button.btn.btn-primary= `Purchase Package`
+
+                  
+
+                  

@@ -1,0 +1,74 @@
+extends layout 
+block vars 
+    -var locationPageActive= "active"
+block title   
+  title TravelExperts Purchase a Package
+
+block content 
+ // Entry Forms
+ section#contact.contact.section-bg
+  .container
+    .section-title
+      h2= `Purchase Package at ${detailedLocation}`
+    if errors   
+      each error in errors 
+        p.alert.alert-danger= error
+    .col-lg-6.mx-auto
+      fieldset
+        form.php-email-form.no-shadow(method='POST' action=`/packages/purchase/confirmation` target='')
+          if numberBooked
+            .container.form.text-center
+                  h3 Confirm Purchase?
+                  h5= `Total Cost is $${Number(pkgBasePrice) * Number(numberBooked) + Number(pkgAgentPrice)} CAD`
+          .form-group
+            h4 Package Price:
+            p= `$ ${pkgBasePrice} CAD`
+            if !numberBooked  
+              h4
+                label(for='numberBooked') How many would you like to book:
+              select.form-control(name='numberBooked')
+                option 1
+                option 2
+                option 3
+                option 4
+                option 5
+                option 6
+                option 7
+                option 8
+                option 9
+                option 10
+                option 11
+                option 12
+              input(type='hidden' name='pkgID' value=`${pkgID}`)
+              input(type='hidden' name='detailedLocation' value=`${detailedLocation}`)
+              input(type='hidden' name='pkgBasePrice' value=`${pkgBasePrice}`)
+              input(type='hidden' name='pkgAgentPrice' value=`${pkgAgentPrice}`)
+              <br>
+              .container.form.text-center
+                .row
+                  .col 
+                    button.text-center.btn-lg(type='submit' onclick='return Form_submit()')
+                      | Submit
+                  .col 
+                    button.text-center.btn-lg(type='reset' onclick='return Form_reset()')
+                      | Reset
+            else
+              h4 Number Booked:
+              p= `${numberBooked}`
+              h4 Service Fee:
+              p= `$ ${pkgAgentPrice} CAD`
+        if numberBooked
+          form.php-email-form.no-shadow(method='POST' action=`/packages/purchase/complete` target='')
+            input(type='hidden' name='pkgID' value=`${pkgID}`)
+            input(type='hidden' name='detailedLocation' value=`${detailedLocation}`)
+            input(type='hidden' name='totalCost' value=`${Number(pkgBasePrice) * Number(numberBooked) + Number(pkgAgentPrice)}`)
+            input(type='hidden' name='numberBooked' value=`${numberBooked}`)  
+            .container.form.text-center
+              .row
+                .col 
+                  button.text-center.btn-lg(type='submit' onclick='return Form_submit_purchase()')
+                    | Confirm
+                .col 
+                  button.text-center.btn-lg(type='reset' onclick='window.location.href="/packages"')
+                    | Cancel
+        

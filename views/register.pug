@@ -1,0 +1,97 @@
+extends layout 
+block vars 
+    -var loginPageActive= "active"
+block title   
+  title TravelExperts Register
+
+block content 
+ // Entry Forms
+ section#contact.contact.section-bg
+  .container
+    .section-title
+      h2 Register
+    if errors   
+      each error in errors 
+        p.alert.alert-danger= error
+    fieldset
+      form.php-email-form(method='POST' action='/account/register' target='')
+          legend Create an Account:
+          .row
+            .form-group.col
+              label(for='email') Email:
+              input#email.form-control(type='email' placeholder='Enter email' name='email' required='' onmouseover='HoverForm(this)' onmouseout='HoverFormExit(this)' value=email)
+              small.form-text.text-muted Your email will not be shared with anyone
+              br
+            .form-group.col
+              label(for='username') Username:
+              input#email.form-control(type='text' placeholder='Enter username' name='username' required='' value=username)
+              br
+            .form-group.col
+              label(for='text') Password:
+              input#password.form-control(type='password' placeholder='Enter password' name='password' required='' )
+              br
+          .row
+            .form-group.col
+              label(for='fname') First Name
+              input#fname.form-control(type='text' name='fname' placeholder='First name' required='' value=fname)   
+              br   
+            .form-group.col
+              label(for='lname') Last Name
+              input#lname.form-control(type='text' name='lname' placeholder='Last name' required='' value=lname)
+              br              
+            // Contact
+          .row
+            .form-group.col
+              label(for='phone') Phone Number:
+              input#phone.form-control(type='tel' name='phone' placeholder='123-456-7890'  required=''
+              oninvalid="setCustomValidity('Please use format 000-000-0000')" title='Please use format 000-000-0000' onmouseover='HoverForm(this)' onmouseout='HoverFormExit(this)' value=phone)
+              small.form-text.text-muted Please use format 000-000-0000
+              br
+            .form-group.col
+              label(for='Address') Street Address
+              input#Address.form-control(type='text' name='Address' placeholder='Street Address' required='' value=Address)
+              br
+          .row
+            .form-group.col
+              label(for='City') City
+              input#City.form-control(type='text' name='City' placeholder='City' required='' value=City)
+              br
+            .form-group.col
+              label(for='Province') Province: 
+              select#Province.form-control.select-border(name='Province' required)
+                option(value="" disabled='' selected="" hidden='' required="") Select ... 
+                option AB
+                option BC
+                option MB
+                option NB
+                option NL
+                option NT
+                option NS
+                option NU
+                option ON
+                option PE
+                option QC
+                option SK
+                option YT
+              br
+            .form-group.col
+              label(for='Postal_Code') Postal Code:
+              input#Postal_Code.form-control(type='text' name='Postal_Code' placeholder='A1A 1A1' required=''
+              oninvalid="setCustomValidity('Please use format A1A 1A1')" title='Please use format A1A-1A1' onmouseover='HoverForm(this)' onmouseout='HoverFormExit(this)' value=Postal_Code)
+              small.form-text.text-muted Please use format A1A 1A1, all in CAPS
+              //-   .form-group
+              //-     label(for='Information') Additonal Information:
+              //-     br
+              //-     textarea#Information.form-control(name='Information' placeholder='Add any additional Informaton')
+              br
+              br
+
+            .container.form.text-center
+              .row
+                .col 
+                  button.text-center.btn-lg(type='submit' onclick='return Form_submit()')
+                    | Submit
+                .col 
+                  button.text-center.btn-lg(type='reset' onclick='return Form_reset()')
+                    | Reset
+            br

@@ -1,0 +1,77 @@
+extends layout 
+block vars 
+    -var locationPageActive= "active"
+block title   
+  title TravelExperts Package
+
+block content 
+ // Entry Forms
+ section#contact.contact.section-bg
+  .container
+    .section-title
+      h2 Create a Package
+    if errors   
+      each error in errors 
+        p.alert.alert-danger= error
+    fieldset
+      form.php-email-form(method='POST' action='/packages/create' target='')
+        legend Create a Package:
+        .row
+            .col
+                .form-group
+                label(for='locationName') Location Name:
+                input#email.form-control(type='text' placeholder='Enter Country' name='locationName' required='' onmouseover='HoverForm(this)' onmouseout='HoverFormExit(this)')
+                small.form-text.text-muted Country name ex) Canada
+                br
+            .col
+                .form-group
+                label(for='detailedLocation') Detailed Location:
+                input#email.form-control(type='text' placeholder='Enter Detailed Location' name='detailedLocation' required='' onmouseover='HoverForm(this)' onmouseout='HoverFormExit(this)')
+                small.form-text.text-muted Attraction name ex) Niagra Falls
+                br
+        .row
+            .col
+                .form-group
+                label(for='startDate') Start Date:
+                input#email.form-control(type='date' name='startDate' required='' onmouseover='HoverForm(this)' onmouseout='HoverFormExit(this)')
+                small.form-text.text-muted Package Start Date
+                br
+            .col
+                .form-group
+                label(for='endDate') End Date:
+                input#email.form-control(type='date' name='endDate' required='' onmouseover='HoverForm(this)' onmouseout='HoverFormExit(this)')
+                small.form-text.text-muted Package End Date
+                br
+                .row
+        .row
+            .col
+                .form-group
+                label(for='basePrice') Base Package Price:
+                input#email.form-control(type='text' placeholder='Enter Package Price' name='basePrice' required='' onmouseover='HoverForm(this)' onmouseout='HoverFormExit(this)')
+                small.form-text.text-muted Package price per person
+                br
+            .col
+                .form-group
+                label(for='agentCommission') Agent Commission:
+                input#email.form-control(type='text' placeholder='Enter Detailed Location' name='agentCommission' required='' onmouseover='HoverForm(this)' onmouseout='HoverFormExit(this)')
+                small.form-text.text-muted Agent commission per booking
+                br
+            .col 
+                .form-group
+                label(for='picName') Picture Name:
+                input#email.form-control(type='text' placeholder='Enter Picture Name' name='picName' required='' onmouseover='HoverForm(this)' onmouseout='HoverFormExit(this)')
+                small.form-text.text-muted Picture must be placed in the media folder, in jpg format
+                br
+        .form-group
+          label(for='description') Location Description:
+          textarea#email.form-control(name='description' placeholder='Add Detailed Informaton' required='' )
+        br
+        .container.form.text-center
+          .row
+            .col 
+              button.text-center.btn-lg(type='submit' onclick='return Form_submit()')
+                | Submit
+            .col 
+              button.text-center.btn-lg(type='reset' onclick='return Form_reset()')
+                | Reset
+          br

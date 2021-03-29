@@ -1,0 +1,78 @@
+doctype html
+html 
+  head
+    meta(charset='utf-8')
+    meta(content='width=device-width, initial-scale=1.0' name='viewport')
+    block title
+      title= `TravelExperts ${pageTitle}`
+    links
+      // Sourced CSS files
+      link(rel='stylesheet' href='/API/bootstrap-5.0.0-beta2-dist/css/bootstrap.min.css')
+      link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css')
+      link(rel='stylesheet' href='/API/Squadfree/assets/vendor/boxicons/css/boxicons.min.css')
+      link(rel='stylesheet' href='/API/Squadfree/assets/vendor/glightbox/css/glightbox.min.css')
+      link(rel='stylesheet' href='/API/Squadfree/assets/vendor/swiper/swiper-bundle.min.css')
+      link(rel='stylesheet' href='/API/Squadfree/assets/css/style.css')
+      // Main CSS File
+      link(rel='stylesheet' href='/css/MainPage.css')
+  block vars
+  body
+    header#header.fixed-top
+      .container.d-flex.align-items-center.justify-content-between
+        a.logo(href='/')
+          h1.text-light
+            img.img-fluid.logo(src='/media/TravelExpertsLogo.png' alt='TravelExpertsLogo')
+            span Travel Experts
+        // Navigation bar
+        nav#navbar.navbar
+          ul
+            li
+              a(href='/' class = `nav-link scrollto ${mainPageActive}`)
+                i.fas.fa-home
+                | Main Page
+            li
+              a(href='/packages' class = `nav-link scrollto ${locationPageActive}`)
+                i.fas.fa-globe-americas
+                | Packages
+            li
+              a.nav-link.scrollto(href='/contact' class = `nav-link scrollto ${contactPageActive}`)
+                i.fas.fa-phone-square-alt
+                | Contact Us
+            li.dropdown 
+              a.nav-link.scrollto(href='/account' class = `nav-link scrollto ${loginPageActive}`)
+                i.fas.fa-sign-in-alt
+                | Account
+              ul(style='background:#f8f9fa')
+                  if currentUser
+                    li  
+                      a(href='/account') User Details
+                    li  
+                      a(href='/log-out') Log Out
+                  else
+                    li
+                      a(href='/account') 
+                        span.left-align Login
+                    li
+                      a(href='/account/register') 
+                        span.left-align Sign Up
+          i.bi.bi-list.mobile-nav-toggle
+      
+
+    block content
+
+
+
+
+    footer TravelExperts &copy;
+    links
+      // Vendor JS Files
+      script(src='/API/Squadfree/assets/vendor/aos/aos.js')
+      script(src='/API/Squadfree/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')
+      script(src='/API/Squadfree/assets/vendor/glightbox/js/glightbox.min.js')
+      script(src='/API/Squadfree/assets/vendor/isotope-layout/isotope.pkgd.min.js')
+      script(src='/API/Squadfree/assets/vendor/php-email-form/validate.js')
+      script(src='/API/Squadfree/assets/vendor/purecounter/purecounter.js')
+      script(src='/API/Squadfree/assets/vendor/swiper/swiper-bundle.min.js')
+      script(src='/API/Squadfree/assets/js/main.js')
+      script(src='/API/bootstrap-5.0.0-beta2-dist/js/bootstrap.js')
+      script(src='/js/scripts.js')

@@ -1,0 +1,44 @@
+extends layout 
+block vars 
+    -var loginPageActive= "active"
+block title   
+  title TravelExperts Login
+
+block content 
+    main#main
+    section#contact.contact.section-bg
+      .container
+        .section-title
+          h2 Account
+        if errors   
+          each error in errors 
+            p.alert.alert-danger= error
+        .container
+          .row
+            .col-lg-8.mx-auto
+              form.php-email-form(method='POST' action='/account/login' target='')
+                .row
+                  .form-group.text-center
+                    h4 Log In
+                .row
+                  .form-group
+                    label(for='username') Username:
+                    input#email.form-control(type='text' placeholder='Enter Username' name='username')
+                    <br>
+                .row
+                  .form-group
+                    label(for='password') Password:
+                    input#password.form-control(type='password' placeholder='Enter password' name='password')
+                    <br>               
+                .row
+                  .form-group
+                    label.form-check-label
+                      input(type='checkbox' name='remember')
+                      |  Remember me
+                    <br>
+                    <br>
+                .row.text-center
+                  .col 
+                    button.btn-lg(type='submit') Submit
+                  .col
+                    button.btn-lg(type='button' onclick="window.location='/account/register'") Register
