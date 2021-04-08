@@ -2,7 +2,8 @@
 
 - Apply NodeJS, Express, Mongoose to dynamically render travel web pages pulled from an existing database. Functionality includes user login, travel package selection/creation, and updates.
 - Front end created with PUG, HTML, and CSS.
-- Please note .env file is hidden, so the database will not be linked up, but feel free to test https://travelsite-antony.herokuapp.com/ to view the website. Test a user with username a, password a. Test an admin with username b, password b
+- Please note .env file is hidden, so the database will not be linked up, but feel free to test https://travelsite-antony.herokuapp.com/ to view the website.
+- Test a user with username a, password a. Test an admin with username b, password b
 
 ### Functionalities:
 
