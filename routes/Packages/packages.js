@@ -24,22 +24,23 @@ router.use("/create", createPackageRouter);
 
 router.use("/review", reviewPackageRouter);
 
-router.get("/:locationName", function (req, res, next) {
+router.get("/:locationName", async function (req, res, next) {
   //Find all packages in the specified location
-  packages.find(
-    {
+  try {
+    let pkgResult = await packages.find({
       locationName: req.params.locationName,
       endDate: { $gte: new Date() },
-    },
-    (err, packageResult) => {
-      if (err) return next(err);
-      //Render the review results
-      res.render("packages", {
-        pkgLocationName: req.params.locationName,
-        packages: packageResult,
-      });
-    }
-  );
+    });
+
+    // if (err) return next(err);
+    //Render the review results
+    res.render("packages", {
+      pkgLocationName: req.params.locationName,
+      packages: pkgResult,
+    });
+  } catch (err) {
+    return next(err);
+  }
 });
 
 module.exports = router;

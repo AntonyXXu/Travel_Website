@@ -40,16 +40,22 @@ router.post("/register", function (req, res, next) {
     pswdError =
       "Password should have 1 lowercase letter, 1 uppercase letter, 1 number, 1 special character and be at least 8 characters.";
   }
-  console.log(
-    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/.test(
-      req.body.password
-    )
-  );
 
   bcrypt.hash(req.body.password, 10, (err, hashPassword) => {
-    if (err) {
-      console.log(err);
-      throw err;
+    if (err || pswdError) {
+      {
+        console.log(pswdError);
+        const errorArray = [];
+        if (pswdError) {
+          errorArray.push(pswdError);
+        }
+        const errorKeys = Object.keys(err.errors);
+        errorKeys.forEach((key) => errorArray.push(err.errors[key].message));
+        return res.render("register", {
+          errors: errorArray,
+          ...req.body,
+        });
+      }
     }
     req.body.password = hashPassword;
     const newUser = new User(req.body);
