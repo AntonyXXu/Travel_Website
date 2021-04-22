@@ -1,6 +1,5 @@
 var express = require("express");
 var router = express.Router();
-const { review } = require("../../models/reviews");
 const { packages } = require("../../models/packages");
 
 router.get("/", function (req, res, next) {
@@ -27,9 +26,7 @@ router.post("/", function (req, res, next) {
       reviewText: req.body.reviewText,
       userID: req.user._id,
     });
-    console.log(result.averageRating);
-    console.log(result.totalReviews);
-    console.log(result.reviews);
+
     result.save((err, result) => {
       if (err) return err;
       res.redirect("/packages/" + req.body.locationName);

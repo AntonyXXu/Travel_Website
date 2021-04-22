@@ -24,8 +24,6 @@ router.use("/create", createPackageRouter);
 
 router.use("/review", reviewPackageRouter);
 
-console.log(new Date());
-
 router.get("/:locationName", function (req, res, next) {
   //Find all packages in the specified location
   packages.find(
