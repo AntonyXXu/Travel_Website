@@ -12,11 +12,11 @@ block content
       if packages.length == 0
         h4 Sorry, we have no packages at this location. Please take a look at the packages menu
       each pkg in packages  
-        .row        
-          .col-lg-6.package-cols.no-shadow
+        .row.row-packages        
+          .col-lg-4.package-cols.no-shadow
             .pic            
               img.img.figure-img.img-fluid.rounded-fluid(src=`/media/MainPage/${pkg.picName}.jpg` alt=`${pkg.detailedLocation}`)
-          .col-lg-3.col-centered.package-cols 
+          .col-lg-4.col-centered.package-cols 
             h2 
               packageTitle= `${pkg.detailedLocation}, ${pkg.locationName}`
              
@@ -38,36 +38,30 @@ block content
                 input(type='hidden' name='pkgBasePrice' value=`${pkg.basePrice}`)
                 input(type='hidden' name='pkgAgentPrice' value=`${pkg.agentCommission}`)
                 button.btn.btn-primary= `Purchase Package`
-          .col-lg-3.col-centered.package-cols 
+          .col-lg-4.col-centered.package-cols 
             .row.row-reviews
               h2 Reviews
               .container
                 .review 
                   .review-box
-                    h5 
-                      Username= `username`
-                    p 
+                    strong 
+                      Username= `username \t`
+                      span #{5}&#9733;
+                    p.review-text
                       review= `review`
                   .review-box
-                    h5 
+                    strong 
                       Username= `username`
-                    p 
+                    p.review-text
                       review= `review`
-                  .review-box
-                    h5 
-                      Username= `username`
-                    p 
-                      review= `review`
-                  .review-box
-                    h5 
-                      Username= `username`
-                    p 
-                      review= `review`
+                    
+        
               //Submission form
             .row.row-reviews
-              h2 Submit a Review
-              form(method="POST" action="/packages/review/" target="")
+              h5 Submit a Review
+              form.review-container(method="POST" action="/packages/review/" target="")
                 label(for="stars") How would you rate this location?
+                br
                 select.review-form(name='Province' required)
                   option(value="" disabled='' selected="" hidden='' required="") Select ... 
                   option 1
@@ -75,10 +69,7 @@ block content
                   option 3
                   option 4
                   option 5
-                br
-                br
-                textarea#Information.form-control(name='reviewText' placeholder='Add a Review' required)
-                br
-                button.btn.btn-primary= `Submit`
-
+                textarea.form-control.review-form(name='reviewText' placeholder='Add a Review' required rows="3")
+                button.btn.btn-primary.btn-review= `Submit`
+                
                     

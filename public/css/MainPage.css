@@ -155,6 +155,9 @@ fieldset {
 }
 
 /* Packages */
+.row-packages {
+  margin-bottom: 3%;
+}
 .row-reviews {
   height: 50%;
 }
@@ -166,7 +169,26 @@ fieldset {
 }
 .review-box {
 }
+.review-text {
+  text-align: justify;
+}
+.review-container {
+  margin-bottom: 1vw;
+  text-align: left;
+}
+.review-form {
+  margin-bottom: 1%;
+  border-radius: 5px;
+}
 
 .review-form:required {
-  border: steelblue;
+  border: cornflowerblue solid 2px;
+}
+.review-form:invalid {
+  border: cornflowerblue solid 2px;
+}
+
+.btn-review {
+  margin-bottom: 1vw;
+  justify-content: center !important;
 }
