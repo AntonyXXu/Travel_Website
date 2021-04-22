@@ -33,7 +33,6 @@ router.get("/:locationName", function (req, res, next) {
     },
     (err, packageResult) => {
       if (err) return next(err);
-
       //Render the review results
       res.render("packages", {
         pkgLocationName: req.params.locationName,

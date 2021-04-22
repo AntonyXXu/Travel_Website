@@ -25,6 +25,7 @@ router.post("/", function (req, res, next) {
       rating: req.body.rating,
       reviewText: req.body.reviewText,
       userID: req.user._id,
+      username: req.user.username,
     });
 
     result.save((err, result) => {
@@ -35,9 +36,23 @@ router.post("/", function (req, res, next) {
 });
 
 router.post("/delete", function (req, res, next) {
-  {
-    res.redirect("/packages/" + req.body.locationName);
+  if (req.body.userID != req.user._id) {
+    return;
   }
+
+  packages.findById({ _id: req.body.pkgID }, (err, pkgResult) => {
+    if (err) return err;
+    pkgResult.averageRating =
+      (pkgResult.averageRating * pkgResult.totalReviews -
+        parseInt(req.body.rating)) /
+      (pkgResult.totalReviews - 1);
+    pkgResult.totalReviews -= 1;
+    pkgResult.reviews.pull(req.body.reviewID);
+    pkgResult.save((err, result) => {
+      if (err) return err;
+      res.redirect("/packages/" + req.body.locationName);
+    });
+  });
 });
 
 module.exports = router;

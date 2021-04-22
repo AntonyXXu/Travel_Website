@@ -21,6 +21,11 @@ const reviewSchema = new mongoose.Schema({
     required: "User ID is required",
     trim: true,
   },
+  username: {
+    type: String,
+    required: "User ID is required",
+    trim: true,
+  },
   rating: {
     type: Number,
     required: "Rating is required",
@@ -95,4 +100,3 @@ const packageSchema = new mongoose.Schema({
 });
 
 module.exports.packages = mongoose.model("packages", packageSchema);
-// module.exports.review = mongoose.model("review", reviewSchema);

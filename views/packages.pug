@@ -43,47 +43,48 @@ block content
             .row.row-reviews
               h2= `Reviews ${'\u2605'.repeat(parseInt(pkg.averageRating))}${'\u2606'.repeat(5-parseInt(pkg.averageRating))}`
               .review 
-                .review-box
-                  strong 
-                    Username= `username \t`
-                    span= `${'\u2605'.repeat(3)}${'\u2606'.repeat(5-3)}`
-                    span.btn-del
-                      form(method='POST' action=`/packages/review/delete` target='')
-                        input(type='hidden' name='reviewID' value=``)
-                        input(type='hidden' name='locationName' value=`${pkg.locationName}`)
-                        button.btn.btn-outline-danger.btn-sm(type='submit') Delete
-                  p.review-text
-                    review= `review asdafasfsaf a sdfasdfsaa aasd asd asdfdsafsafsadfsafsdafasf af dsa fsadf `
-                .review-box
-                  strong 
-                    Username= `username`
-                  p.review-text
-                    | script
-                .review-box
-                  strong 
-                    Username= `username`
-                  p.review-text
-                    | script
-                .review-box
-                  strong 
-                    Username= `username`
-                  p.review-text
-                    | script
-                .review-box
-                  strong 
-                    Username= `username`
-                  p.review-text
-                    | script
-                .review-box
-                  strong 
-                    Username= `username`
-                  p.review-text
-                    | script
-                .review-box
-                  strong 
-                    Username= `username`
-                  p.review-text
-                    | script
+                each rev in pkg.reviews
+                  .review-box
+                    Username= `${rev.username}`
+                    if currentUser
+                      if currentUser._id == rev.userID
+                        span.btn-del
+                          form(method='POST' action=`/packages/review/delete` target='')
+                            input(type='hidden' name='rating' value=`${rev.rating}`)
+                            input(type='hidden' name='userID' value=`${rev.userID}`)
+                            input(type='hidden' name='pkgID' value=`${pkg._id}`)
+                            input(type='hidden' name='reviewID' value=`rev._id`)
+                            input(type='hidden' name='locationName' value=`${pkg.locationName}`)
+                            button.btn.btn-outline-danger.btn-sm(type='submit') Delete
+                    p.review-text
+                      review= `${rev.reviewText} `
+
+
+            
+                //-   .review-box 
+                //-     Username= `username \t`
+                //-     span= `${'\u2605'.repeat(parseInt(5))}${'\u2606'.repeat(5-parseInt(5)))}`
+                //-     //- span= `${'\u2605'.repeat(parseInt(post.rating))}${'\u2606'.repeat(5-parseInt(post.rating)))}`
+                //-     span.btn-del
+                //-       form(method='POST' action=`/packages/review/delete` target='')
+                //-         input(type='hidden' name='reviewID' value=`rev._id`)
+                //-         input(type='hidden' name='locationName' value=`${pkg.locationName}`)
+                //-         button.btn.btn-outline-danger.btn-sm(type='submit') Delete
+                //-   p.review-text
+                //-     review= `aasdfasfds `
+                
+                //- .review-box
+                //-   strong 
+                //-     Username= `username \t`
+                //-     span= `${'\u2605'.repeat(3)}${'\u2606'.repeat(5-3)}`
+                //-     span.btn-del
+                //-       form(method='POST' action=`/packages/review/delete` target='')
+                //-         input(type='hidden' name='reviewID' value=``)
+                //-         input(type='hidden' name='locationName' value=`${pkg.locationName}`)
+                //-         button.btn.btn-outline-danger.btn-sm(type='submit') Delete
+                //-   p.review-text
+                //-     review= `review asdafasfsaf a sdfasdfsaa aasd asd asdfdsafsafsadfsafsdafasf af dsa fsadf `
+               
             //Submission form
             .row.row-reviews
               h5 Submit a Review
