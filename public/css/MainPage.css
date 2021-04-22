@@ -153,3 +153,20 @@ fieldset {
   padding: 30px;
   background: #fff;
 }
+
+/* Packages */
+.row-reviews {
+  height: 50%;
+}
+.review {
+  overflow: scroll;
+  border: #8ec4dd;
+  border-style: solid;
+  border-radius: 5px;
+}
+.review-box {
+}
+
+.review-form:required {
+  border: steelblue;
+}

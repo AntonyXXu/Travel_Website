@@ -16,11 +16,10 @@ block content
           .col-lg-6.package-cols.no-shadow
             .pic            
               img.img.figure-img.img-fluid.rounded-fluid(src=`/media/MainPage/${pkg.picName}.jpg` alt=`${pkg.detailedLocation}`)
-          .col.col-centered.package-cols 
+          .col-lg-3.col-centered.package-cols 
             h2 
               packageTitle= `${pkg.detailedLocation}, ${pkg.locationName}`
-              <br>
-              <br>
+             
             p.left-align= `${pkg.description}`
             p.left-align= `Base Price per person: $${pkg.basePrice} CAD`
             p.left-align= `Service Fee: $${pkg.agentCommission} CAD`
@@ -39,7 +38,47 @@ block content
                 input(type='hidden' name='pkgBasePrice' value=`${pkg.basePrice}`)
                 input(type='hidden' name='pkgAgentPrice' value=`${pkg.agentCommission}`)
                 button.btn.btn-primary= `Purchase Package`
+          .col-lg-3.col-centered.package-cols 
+            .row.row-reviews
+              h2 Reviews
+              .container
+                .review 
+                  .review-box
+                    h5 
+                      Username= `username`
+                    p 
+                      review= `review`
+                  .review-box
+                    h5 
+                      Username= `username`
+                    p 
+                      review= `review`
+                  .review-box
+                    h5 
+                      Username= `username`
+                    p 
+                      review= `review`
+                  .review-box
+                    h5 
+                      Username= `username`
+                    p 
+                      review= `review`
+              //Submission form
+            .row.row-reviews
+              h2 Submit a Review
+              form(method="POST" action="/packages/review/" target="")
+                label(for="stars") How would you rate this location?
+                select.review-form(name='Province' required)
+                  option(value="" disabled='' selected="" hidden='' required="") Select ... 
+                  option 1
+                  option 2
+                  option 3
+                  option 4
+                  option 5
+                br
+                br
+                textarea#Information.form-control(name='reviewText' placeholder='Add a Review' required)
+                br
+                button.btn.btn-primary= `Submit`
 
-                  
-
-                  
+                    
