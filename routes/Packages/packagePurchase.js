@@ -75,8 +75,6 @@ router.post("/complete", function (req, res, next) {
         return res.render("packagePurchaseComplete", req.body);
       }
     );
-    //if save complete, go to complete page
-    return res.render("packagePurchaseComplete", req.body);
   });
 });
 

@@ -21,14 +21,14 @@ const reviewSchema = new mongoose.Schema({
     required: "User ID is required",
     trim: true,
   },
-  Rating: {
+  rating: {
     type: Number,
     required: "Rating is required",
     trim: true,
     min: 1,
     max: 5,
   },
-  Comments: {
+  reviewText: {
     type: String,
     trim: true,
   },

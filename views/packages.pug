@@ -19,7 +19,7 @@ block content
               img.img.figure-img.img-fluid.rounded-fluid(src=`/media/MainPage/${pkg.picName}.jpg` alt=`${pkg.detailedLocation}`)
           .col-lg-4.col-centered.package-cols 
             h2 
-              packageTitle= `${pkg.detailedLocation}, ${pkg.locationName}`
+              packageTitle= `${pkg.detailedLocation}`
              
             p.left-align= `${pkg.description}`
             p.left-align= `Base Price per person: $${pkg.basePrice} CAD`
@@ -41,7 +41,7 @@ block content
                 button.btn.btn-primary= `Purchase Package`
           .col-lg-4.col-centered.package-cols 
             .row.row-reviews
-              h2= `Reviews ${'\u2605'.repeat(pkg.averageRating)}${'\u2606'.repeat(5-pkg.averageRating)}`
+              h2= `Reviews ${'\u2605'.repeat(parseInt(pkg.averageRating))}${'\u2606'.repeat(5-parseInt(pkg.averageRating))}`
               .review 
                 .review-box
                   strong 
@@ -92,9 +92,9 @@ block content
                   button.btn.btn-primary= `Log in or register to review`
               else
                 form.review-container(method="POST" action="/packages/review/" target="")
-                  label(for="stars") How would you rate this location?
+                  label(for="rating") How would you rate this location?
                   br
-                  select.review-form(name='stars' required
+                  select.review-form(name='rating' required
                   oninvalid="setCustomValidity('Please select a review star')"
                   oninput="setCustomValidity('')")
                     option(value="" disabled='' selected="" hidden='' required="") Select ... 
