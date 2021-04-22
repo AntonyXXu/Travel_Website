@@ -162,7 +162,7 @@ fieldset {
 .row-reviews {
 }
 .review {
-  overflow: scroll;
+  overflow: auto;
   border: #8ec4dd dotted 2px;
   border-radius: 5px;
   height: 200px;

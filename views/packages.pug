@@ -46,10 +46,10 @@ block content
                 .review-box
                   strong 
                     Username= `username \t`
-                    span= `${'\u2605'.repeat(3)}`
+                    span= `${'\u2605'.repeat(3)}${'\u2606'.repeat(5-3)}`
                     span.btn-del
-                      form(method='POST' action=`` target='')
-                        input(type='hidden' name='postID' value=``)
+                      form(method='POST' action=`packages/delete-review` target='')
+                        input(type='hidden' name='reviewID' value=``)
                         button.btn.btn-outline-danger.btn-sm Delete
                   p.review-text
                     review= `review asdafasfsaf a sdfasdfsaa aasd asd asdfdsafsafsadfsafsdafasf af dsa fsadf `
@@ -86,20 +86,24 @@ block content
             //Submission form
             .row.row-reviews
               h5 Submit a Review
-              form.review-container(method="POST" action="/packages/review/" target="")
-                label(for="stars") How would you rate this location?
-                br
-                select.review-form(name='stars' required
-                oninvalid="setCustomValidity('Please select a review star')"
-                oninput="setCustomValidity('')")
-                  option(value="" disabled='' selected="" hidden='' required="") Select ... 
-                  option 1
-                  option 2
-                  option 3
-                  option 4
-                  option 5
-                textarea.form-control.review-form(name='reviewText' placeholder='Add a Review' rows="3")
-                button.btn.btn-primary.btn-review Submit
-                 
-              
+              if !currentUser
+                form(method='GET' action='/account' target='')
+                  button.btn.btn-primary= `Log in or register to purchase`
+              else
+                form.review-container(method="POST" action="/packages/review/" target="")
+                  label(for="stars") How would you rate this location?
+                  br
+                  select.review-form(name='stars' required
+                  oninvalid="setCustomValidity('Please select a review star')"
+                  oninput="setCustomValidity('')")
+                    option(value="" disabled='' selected="" hidden='' required="") Select ... 
+                    option 1
+                    option 2
+                    option 3
+                    option 4
+                    option 5
+                  textarea.form-control.review-form(name='reviewText' placeholder='Add a Review' rows="3")
+                  button.btn.btn-primary.btn-review Submit
+                  
+                
                   
