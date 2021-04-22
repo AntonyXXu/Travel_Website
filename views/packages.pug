@@ -53,7 +53,7 @@ block content
                             input(type='hidden' name='rating' value=`${rev.rating}`)
                             input(type='hidden' name='userID' value=`${rev.userID}`)
                             input(type='hidden' name='pkgID' value=`${pkg._id}`)
-                            input(type='hidden' name='reviewID' value=`rev._id`)
+                            input(type='hidden' name='reviewID' value=`${pkg._id}`)
                             input(type='hidden' name='locationName' value=`${pkg.locationName}`)
                             button.btn.btn-outline-danger.btn-sm(type='submit') Delete
                     p.review-text

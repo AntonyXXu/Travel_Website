@@ -42,16 +42,26 @@ router.post("/delete", function (req, res, next) {
 
   packages.findById({ _id: req.body.pkgID }, (err, pkgResult) => {
     if (err) return err;
-    pkgResult.averageRating =
+    var averageRating =
       (pkgResult.averageRating * pkgResult.totalReviews -
         parseInt(req.body.rating)) /
       (pkgResult.totalReviews - 1);
-    pkgResult.totalReviews -= 1;
-    pkgResult.reviews.pull(req.body.reviewID);
-    pkgResult.save((err, result) => {
-      if (err) return err;
-      res.redirect("/packages/" + req.body.locationName);
-    });
+    var totalReviews = (pkgResult.totalReviews -= 1);
+    console.log(req.body.reviewID);
+    packages.findOneAndUpdate(
+      { _id: req.body.pkgID },
+      {
+        averageRating: averageRating,
+        totalReviews: totalReviews,
+        $pull: { reviews: { _id: req.body.reviewID } },
+      },
+
+      (err, result) => {
+        if (err) return err;
+        console.log("req.body.reviewID");
+        res.redirect("/packages/" + req.body.locationName);
+      }
+    );
   });
 });
 
