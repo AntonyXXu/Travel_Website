@@ -2,7 +2,6 @@ var express = require("express");
 var router = express.Router();
 const { locations } = require("../../models/locations");
 const { packages } = require("../../models/packages");
-const { review } = require("../../models/reviews");
 const purchasePackageRouter = require("./packagePurchase");
 const createPackageRouter = require("./packageCreate");
 const reviewPackageRouter = require("./packageReview");
@@ -37,21 +36,11 @@ router.get("/:locationName", function (req, res, next) {
     (err, packageResult) => {
       if (err) return next(err);
 
-      //Find all reviews in the specified location
-      review.find(
-        {
-          packageID: packageResult._id,
-        },
-        (err, reviewResult) => {
-          if (err) return next(err);
-          console.log(reviewResult);
-          //Render the review results
-          res.render("packages", {
-            pkgLocationName: req.params.locationName,
-            packages: packageResult,
-          });
-        }
-      );
+      //Render the review results
+      res.render("packages", {
+        pkgLocationName: req.params.locationName,
+        packages: packageResult,
+      });
     }
   );
 });

@@ -80,16 +80,19 @@ const packageSchema = new mongoose.Schema({
     type: Number,
     required: "Rating is required",
     trim: true,
-    min: 1,
+    min: 0,
     max: 5,
+    default: 0,
   },
   totalReviews: {
     type: Number,
     required: "Number of Reviews is required",
     trim: true,
     min: 0,
+    default: 0,
   },
   reviews: [reviewSchema],
 });
 
 module.exports.packages = mongoose.model("packages", packageSchema);
+// module.exports.review = mongoose.model("review", reviewSchema);
