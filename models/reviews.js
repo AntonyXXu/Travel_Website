@@ -30,7 +30,6 @@ const reviewSchema = new mongoose.Schema({
   },
   Comments: {
     type: String,
-    required: "Comments are required",
     trim: true,
   },
 });

@@ -1,6 +1,7 @@
 extends layout
 block vars 
     -var locationPageActive= "active"
+    -var blackStar = ""
 block title   
   title TravelExperts Packages
 block content
@@ -41,35 +42,64 @@ block content
           .col-lg-4.col-centered.package-cols 
             .row.row-reviews
               h2 Reviews
-              .container
-                .review 
-                  .review-box
-                    strong 
-                      Username= `username \t`
-                      span #{5}&#9733;
-                    p.review-text
-                      review= `review`
-                  .review-box
-                    strong 
-                      Username= `username`
-                    p.review-text
-                      review= `review`
-                    
-        
-              //Submission form
+              .review 
+                .review-box
+                  strong 
+                    Username= `username \t`
+                    span= `${'\u2605'.repeat(3)}`
+                    span.btn-del
+                      form(method='POST' action=`` target='')
+                        input(type='hidden' name='postID' value=``)
+                        button.btn.btn-outline-danger.btn-sm Delete
+                  p.review-text
+                    review= `review asdafasfsaf a sdfasdfsaa aasd asd asdfdsafsafsadfsafsdafasf af dsa fsadf `
+                .review-box
+                  strong 
+                    Username= `username`
+                  p.review-text
+                    | script
+                .review-box
+                  strong 
+                    Username= `username`
+                  p.review-text
+                    | script
+                .review-box
+                  strong 
+                    Username= `username`
+                  p.review-text
+                    | script
+                .review-box
+                  strong 
+                    Username= `username`
+                  p.review-text
+                    | script
+                .review-box
+                  strong 
+                    Username= `username`
+                  p.review-text
+                    | script
+                .review-box
+                  strong 
+                    Username= `username`
+                  p.review-text
+                    | script
+            //Submission form
             .row.row-reviews
               h5 Submit a Review
               form.review-container(method="POST" action="/packages/review/" target="")
                 label(for="stars") How would you rate this location?
                 br
-                select.review-form(name='Province' required)
+                select.review-form(name='stars' required
+                oninvalid="setCustomValidity('Please select a review star')"
+                oninput="setCustomValidity('')")
                   option(value="" disabled='' selected="" hidden='' required="") Select ... 
                   option 1
                   option 2
                   option 3
                   option 4
                   option 5
-                textarea.form-control.review-form(name='reviewText' placeholder='Add a Review' required rows="3")
-                button.btn.btn-primary.btn-review= `Submit`
-                
-                    
+                textarea.form-control.review-form(name='reviewText' placeholder='Add a Review' rows="3")
+                button.btn.btn-primary.btn-review Submit
+                 
+              
+                  

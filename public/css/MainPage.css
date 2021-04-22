@@ -155,22 +155,31 @@ fieldset {
 }
 
 /* Packages */
+
 .row-packages {
   margin-bottom: 3%;
 }
 .row-reviews {
-  height: 50%;
 }
 .review {
   overflow: scroll;
-  border: #8ec4dd;
-  border-style: solid;
+  border: #8ec4dd dotted 2px;
   border-radius: 5px;
+  height: 200px;
+  margin-bottom: 1vw;
 }
 .review-box {
+  padding: 5px;
+  text-align: justify;
+}
+.btn-del {
+  float: right;
+}
+.btn-sm {
+  padding: 0.2rem 0.4rem;
+  font-size: 0.8rem;
 }
 .review-text {
-  text-align: justify;
 }
 .review-container {
   margin-bottom: 1vw;
