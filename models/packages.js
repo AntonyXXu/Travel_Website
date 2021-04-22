@@ -52,6 +52,19 @@ const packageSchema = new mongoose.Schema({
     required: "Name of the picture is required",
     trim: true,
   },
+  averageRating: {
+    type: Number,
+    required: "Rating is required",
+    trim: true,
+    min: 1,
+    max: 5,
+  },
+  totalReviews: {
+    type: Number,
+    required: "Number of Reviews is required",
+    trim: true,
+    min: 0,
+  },
 });
 
 module.exports.packages = mongoose.model("packages", packageSchema);

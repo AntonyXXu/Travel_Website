@@ -4,6 +4,7 @@ const { locations } = require("../../models/locations");
 const { packages } = require("../../models/packages");
 const purchasePackageRouter = require("./packagePurchase");
 const createPackageRouter = require("./packageCreate");
+const reviewPackageRouter = require("./packageReview");
 
 /*Get Packages page. */
 router.get("/", function (req, res, next) {
@@ -20,6 +21,8 @@ router.use("/purchase", purchasePackageRouter);
 
 //Route Create to packagePurchase file
 router.use("/create", createPackageRouter);
+
+router.use("/review", reviewPackageRouter);
 
 console.log(new Date());
 

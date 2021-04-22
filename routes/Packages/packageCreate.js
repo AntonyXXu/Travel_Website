@@ -17,6 +17,8 @@ router.post("/", function (req, res, next) {
     ...req.body,
     startDate: new Date(req.body.startDate),
     endDate: new Date(req.body.endDate),
+    averageRating: 0,
+    totalReview: 0,
   });
   newPackage.save((err, result) => {
     if (err) {

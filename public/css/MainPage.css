@@ -180,21 +180,23 @@ fieldset {
   font-size: 0.8rem;
 }
 .review-text {
+  font-size: 90%;
 }
 .review-container {
   margin-bottom: 1vw;
   text-align: left;
 }
 .review-form {
+  border: 8ec4dd solid 2px;
   margin-bottom: 1%;
   border-radius: 5px;
 }
 
 .review-form:required {
-  border: cornflowerblue solid 2px;
+  border: 8ec4dd solid 2px;
 }
 .review-form:invalid {
-  border: cornflowerblue solid 2px;
+  border: #8ec4dd solid 2px;
 }
 
 .btn-review {
